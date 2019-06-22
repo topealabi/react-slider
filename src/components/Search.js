@@ -17,6 +17,7 @@ export default class Search extends Component {
     
     handleSubmit(event) {
         this.props.newImages(this.state.searchItem)
+        this.setState({searchItem: ""})
         event.preventDefault();
     }
 
@@ -24,7 +25,7 @@ export default class Search extends Component {
         return(
             <div>
             <form onSubmit={this.handleSubmit}>
-            <input placeholder="keyword" value={this.state.searchItem} onChange={this.handleChange}/>
+            <input placeholder="keyword" autocomplete="on" value={this.state.searchItem} onChange={this.handleChange}/>
             <button type="submit">Search</button>
             </form>
             </div>

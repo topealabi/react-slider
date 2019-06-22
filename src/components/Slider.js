@@ -32,7 +32,7 @@ export default class Slider extends Component {
 
     componentWillMount(){
 
-        this.newImages("dogs")
+        this.newImages("dog")
 
     }
 
