@@ -25,7 +25,8 @@ export default class Slider extends Component {
                 
             ],
             currentIndex: 0,
-            translateValue: 0
+            translateValue: 0,
+            isLoading: false
         }
     }
 
@@ -37,16 +38,19 @@ export default class Slider extends Component {
 
     newImages = (searchTerm) => {
       
+        this.setState({isLoading: true})
         unsplash.search.photos(searchTerm, 1)
             .then(toJson)
             .then(json => {
                 // Your code
-                console.log(json)
                 let temp_images = []
                 for(var i=0; i < json.results.length; i++) {
                     temp_images.push(json.results[i].urls.small) //link
                 }
                 this.setState({images: temp_images})
+        })
+        .then(complete => {
+            this.setState({isLoading: false})
         });
 
     }
@@ -98,8 +102,15 @@ export default class Slider extends Component {
                     paddingTop: '25px'
                 }}
             >
-                <Search newImages={this.newImages}/>
-                <LeftArrow goToPrevSlide={this.goToPrevSlide} />
+                <div style={{marginBottom:"50px"}}>
+                    <Search newImages={this.newImages}/>
+                </div>
+
+                <div style={{marginBottom:"20px"}}>
+                <i className="fas fa-sync fa-spin" style={{visibility: `${this.state.isLoading ? 'visible' : 'hidden'  }`}}></i>
+                </div>
+                
+                <LeftArrow goToPrevSlide={this.goToPrevSlide}  />
                 <RightArrow goToNextSlide={this.goToNextSlide} />
                 <div className="slider-wrapper"
                     style={{
@@ -123,3 +134,4 @@ export default class Slider extends Component {
         )
     }
 }
+
