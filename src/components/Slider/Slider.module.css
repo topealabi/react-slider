@@ -1,0 +1,17 @@
+.slider{
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-top: 25px;
+}
+
+.search{
+    margin-bottom: 50px;
+}
+
+.loadingItem{
+    margin-bottom: 20px;
+}
+

@@ -24,10 +24,10 @@ export default class Search extends Component {
     render() {
         return(
             <div>
-            <form onSubmit={this.handleSubmit}>
-            <input placeholder="keyword" autocomplete="on" value={this.state.searchItem} onChange={this.handleChange}/>
-            <button type="submit">Search</button>
-            </form>
+                <form onSubmit={this.handleSubmit}>
+                    <input placeholder="keyword" autoComplete="on" value={this.state.searchItem} onChange={this.handleChange}/>
+                    <button type="submit">Search</button>
+                </form>
             </div>
         )
     }

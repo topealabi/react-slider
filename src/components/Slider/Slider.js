@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import Slide from './Slide';
-import LeftArrow from './LeftArrow';
-import RightArrow from './RightArrow';
-import Search from './Search';
+import Slide from '../Slide/Slide';
+import LeftArrow from '../LeftArrow/LeftArrow';
+import RightArrow from '../RightArrow/RightArrow';
+import Search from '../SearchBar/Search';
 import Unsplash, { toJson }  from 'unsplash-js';
+import styles from './Slider.module.css';
 
 
 // require syntax
@@ -92,27 +93,20 @@ export default class Slider extends Component {
     render() {
         return(
 
-            <div className="slider"
-                style={{
-                    width: '300px',
-                    height: '300px',
-                    margin: '0 auto',
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
-                    paddingTop: '25px'
-                }}
+            <div className={styles.slider}
+                
             >
-                <div style={{marginBottom:"50px"}}>
+                <div className={styles.search} >
                     <Search newImages={this.newImages}/>
                 </div>
 
-                <div style={{marginBottom:"20px"}}>
+                <div className={styles.loadingItem} >
                 <i className="fas fa-sync fa-spin" style={{visibility: `${this.state.isLoading ? 'visible' : 'hidden'  }`}}></i>
                 </div>
                 
                 <LeftArrow goToPrevSlide={this.goToPrevSlide}  />
                 <RightArrow goToNextSlide={this.goToNextSlide} />
-                <div className="slider-wrapper"
+                <div className="sliderWrapper"
                     style={{
                         position: 'relative',
                         width: '100%',
